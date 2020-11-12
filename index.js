@@ -73,3 +73,8 @@ class Intern extends Employee{
 //const davie = new Intern("Davie", 5, "da@vie.com", "Devry");
 //console.log(davie);
 
+
+const manArray = [];
+const engArray = [];
+const intArray = [];
+

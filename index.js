@@ -44,3 +44,18 @@ class Manager extends Employee {
 //const josie = new Manager("Josie", 2, "jos@ie.com", 3144);
 //console.log(josie);
 
+
+class Engineer extends Employee {
+    constructor(name, id, email, github){
+        super(name, id, email);
+        this.github = github;
+        this.role = "Engineer";
+        this.getGithub = function() {
+            return this.github;
+        }
+    }
+}
+
+//const jenny = new Engineer("Jenny", 3, "je@nny.com", "jennyrshort");
+//console.log(jenny);
+

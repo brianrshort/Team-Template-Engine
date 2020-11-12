@@ -199,3 +199,6 @@ function buildTeam() {
     }
     
     
+    
+    const buildUnits = (managerArray, engineerArray, internArray) => {
+    

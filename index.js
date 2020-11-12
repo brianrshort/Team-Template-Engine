@@ -59,3 +59,17 @@ class Engineer extends Employee {
 //const jenny = new Engineer("Jenny", 3, "je@nny.com", "jennyrshort");
 //console.log(jenny);
 
+class Intern extends Employee{
+    constructor(name, id, email, school){
+        super(name, id, email);
+        this.school = school;
+        this.role = "Intern";
+        this.getSchool = function() {
+            return this.school;
+        }
+    }
+}
+
+//const davie = new Intern("Davie", 5, "da@vie.com", "Devry");
+//console.log(davie);
+

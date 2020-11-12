@@ -31,3 +31,16 @@ class Employee {
 //const phil = new Employee("Phil", 1, "joe@phil.com");
 //console.log(phil);
 
+
+
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber) {
+    super(name, id, email);
+    this.officeNumber = officeNumber;
+    this.role = "Manager";
+    }
+}
+
+//const josie = new Manager("Josie", 2, "jos@ie.com", 3144);
+//console.log(josie);
+

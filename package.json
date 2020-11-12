@@ -1,0 +1,15 @@
+{
+  "name": "team-html-generator",
+  "version": "1.0.0",
+  "description": "A CLI app that takes user input and generates an HTML file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "brianrshort",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "jest": "^24.9.0"
+  }
+}

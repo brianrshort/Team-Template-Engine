@@ -110,3 +110,92 @@ const makeManager = () => {
 }
 
 makeManager();
+
+
+
+function buildTeam() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "teamMember",
+            message: "Add an engineer or intern?",
+            choices: [
+                "Engineer",
+                "Intern",
+                "No additional team members"
+            ]
+        }
+    ]).then(answer => {
+        switch(answer.teamMember) {
+            case "Engineer":
+                buildEngineer();
+                break;
+            case "Intern":
+                buildIntern();
+                break;
+            default:
+                buildUnits(manArray, engArray, intArray);
+                //console.log(manArray, engArray, intArray);
+        }
+    });
+    }
+    
+    function buildEngineer() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "engName",
+            message: "Engineer's name:"
+        },
+        {
+            type: "input",
+            name: "engEmail",
+            message: "Engineer's email address:"
+        },
+        {
+            type: "input",
+            name: "engID",
+            message: "Engineer's ID:"
+        },
+        {
+            type: "input",
+            name: "engGit",
+            message: "Engineer's Github username:"
+        },
+    ]).then(function({ engName, engEmail, engID, engGit }) {
+        const newEng = new Engineer(engName, engEmail, engID, engGit)
+        engArray.push(newEng);
+        buildTeam();
+    })
+    }
+    
+    function buildIntern() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "intName",
+            message: "Intern's name:"
+        },
+        {
+            type: "input",
+            name: "intEmail",
+            message: "Intern's email address:"
+        },
+        {
+            type: "input",
+            name: "intID",
+            message: "Intern's ID:"
+        },
+        {
+            type: "input",
+            name: "intSchool",
+            message: "School intern is attending:"
+        }
+    ]).then(function({ intName, intID, intEmail, intSchool }) {
+        const newInt = new Intern(intName, intEmail, intID, intSchool);
+        intArray.push(newInt);
+        buildTeam();
+    })
+    }
+    
+    

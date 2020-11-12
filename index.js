@@ -78,3 +78,35 @@ const manArray = [];
 const engArray = [];
 const intArray = [];
 
+
+const makeManager = () => {
+    return inquirer.prompt([
+    {
+        type: "input",
+        name: "manName",
+        message: "Manager's name:"
+    },
+    {
+        type: "input",
+        name: "manEmail",
+        message: "Manager's email address:"
+    },
+    {
+        type: "input",
+        name: "manID",
+        message: "Manager's ID number:"
+    },
+    {
+        type: "input",
+        name: "manOffice",
+        message: "Manager's office number:"
+    }
+]).then(function({manName, manEmail, manID, manOffice}){
+    const newManager = new Manager(manName, manEmail, manID, manOffice);
+    manArray.push(newManager);
+    //console.log(newManager);
+    buildTeam();    
+})
+}
+
+makeManager();

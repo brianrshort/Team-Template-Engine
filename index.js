@@ -254,3 +254,11 @@ function buildTeam() {
             `
     });
     
+    const generateIndex = appendIndex(managerCards.join(""), engineerCards.join(""), internCards.join(""));
+    writeFileAsync("index.html", generateIndex, function(err){
+        if (err) {
+            return console.log(err)
+        }
+    });
+    } 
+    

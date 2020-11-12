@@ -1,83 +1,17 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const util = require("util")
+const util = require("util");
+
+const employee = require("./lib/employee.js");
+const Manager = require("./lib/manager.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
 
 const writeFileAsync = util.promisify(fs.writeFile);
-
-
-
-class Employee {
-    constructor (name, email, id) {
-        this.name = name;
-        this.email = email;
-        this.id = id; 
-        this.role = "employee";
-        this.getname = function() {
-            return this.name;
-        }
-        this.getId = function() {
-            return this.id;
-        }
-        this.getEmail = function() {
-            return this.email;
-        }
-        this.getRole = function() {
-            return this.role;
-        }
-
-    }
-}
-
-//const phil = new Employee("Phil", 1, "joe@phil.com");
-//console.log(phil);
-
-
-
-class Manager extends Employee {
-    constructor(name, id, email, officeNumber) {
-    super(name, id, email);
-    this.officeNumber = officeNumber;
-    this.role = "Manager";
-    }
-}
-
-//const josie = new Manager("Josie", 2, "jos@ie.com", 3144);
-//console.log(josie);
-
-
-class Engineer extends Employee {
-    constructor(name, id, email, github){
-        super(name, id, email);
-        this.github = github;
-        this.role = "Engineer";
-        this.getGithub = function() {
-            return this.github;
-        }
-    }
-}
-
-//const jenny = new Engineer("Jenny", 3, "je@nny.com", "jennyrshort");
-//console.log(jenny);
-
-class Intern extends Employee{
-    constructor(name, id, email, school){
-        super(name, id, email);
-        this.school = school;
-        this.role = "Intern";
-        this.getSchool = function() {
-            return this.school;
-        }
-    }
-}
-
-//const davie = new Intern("Davie", 5, "da@vie.com", "Devry");
-//console.log(davie);
-
 
 const manArray = [];
 const engArray = [];
 const intArray = [];
-
 
 const makeManager = () => {
     return inquirer.prompt([
@@ -241,7 +175,7 @@ function buildTeam() {
             <div class="card m-3">
                 <div class="card-header">
                     <h2 class="card-title">${intern.name}</h2>
-                    <h3 class="card-title"><i class="fas fa-graduation-cap"></i> ${intern.getRole()}</h3>
+                    <h3 class="card-title"><i class="fas fa-graduation-cap"></i> ${intern.role}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -306,8 +240,5 @@ function buildTeam() {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         </body>
         </html>
-        
         `
-        
-        
         }

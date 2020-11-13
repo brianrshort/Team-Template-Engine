@@ -2,7 +2,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
 
-const employee = require("./lib/employee.js");
+const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
@@ -40,8 +40,8 @@ const makeManager = () => {
     manArray.push(newManager);
     //console.log(newManager);
     buildTeam();    
-})
-}
+});
+};
 
 makeManager();
 
@@ -97,10 +97,10 @@ function buildTeam() {
             message: "Engineer's Github username:"
         },
     ]).then(function({ engName, engEmail, engID, engGit }) {
-        const newEng = new Engineer(engName, engEmail, engID, engGit)
+        const newEng = new Engineer(engName, engEmail, engID, engGit);
         engArray.push(newEng);
         buildTeam();
-    })
+    });
     }
     
     function buildIntern() {
@@ -138,7 +138,7 @@ function buildTeam() {
     
         const managerCards = managerArray.map(manager => {
             return `
-            <div class="card m-3">
+            <div class="card m-3 col-3">
                 <div class="card-header">
                     <h2 class="card-title">${manager.name}</h2>
                     <h3 class="card-title"><i class="fas fa-hands-helping"></i> ${manager.role}</h3>
@@ -150,12 +150,12 @@ function buildTeam() {
                         <li class="list-group-item">Office number: ${manager.officeNumber}</li>    
                     </ul>
                 </div>
-            </div>`
+            </div>`;
         });
         
         const engineerCards = engineerArray.map(engineer => {
             return `
-            <div class="card m-3">
+            <div class="card m-3 col-3">
                 <div class="card-header">
                     <h2 class="card-title">${engineer.name}</h2>
                     <h3 class="card-title"><i class="fas fa-code"></i> ${engineer.role}</h3>
@@ -172,7 +172,7 @@ function buildTeam() {
         
         const internCards = internArray.map(intern => {
             return `
-            <div class="card m-3">
+            <div class="card m-3 col-3">
                 <div class="card-header">
                     <h2 class="card-title">${intern.name}</h2>
                     <h3 class="card-title"><i class="fas fa-graduation-cap"></i> ${intern.role}</h3>
@@ -185,16 +185,16 @@ function buildTeam() {
                     </ul>
                 </div>
             </div>
-            `
+            `;
     });
     
     const generateIndex = appendIndex(managerCards.join(""), engineerCards.join(""), internCards.join(""));
-    writeFileAsync("index.html", generateIndex, function(err){
+    writeFileAsync("./output/index.html", generateIndex, function(err){
         if (err) {
-            return console.log(err)
+            return console.log(err);
         }
     });
-    } 
+    }; 
     
     
     const appendIndex = function(managerCards, engineerCards, internCards) {
@@ -216,23 +216,11 @@ function buildTeam() {
         
         <div class="container">
             <div class="row">
-                <div id="managerEl" class="col-12">
                     ${managerCards}
-                </div>
-            </div>
-            <div class="row">
-                <div id="engineerEl" class="col-12">
                     ${engineerCards}
-                </div>
-            </div>
-            <div class="row">
-                <div id="internEl" class="col-12">
                     ${internCards}
-                </div>
-            </div>
-        
+            </div>        
         </div>
-        
         
         <script src="https://kit.fontawesome.com/6b1cbbe265.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

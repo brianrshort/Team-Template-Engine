@@ -4,12 +4,12 @@
   "description": "A CLI app that takes user input and generates an HTML file",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose test/*"
   },
   "author": "brianrshort",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.3.1",
-    "jest": "^24.9.0"
+    "inquirer": "^7.3.3",
+    "jest": "^26.6"
   }
 }
